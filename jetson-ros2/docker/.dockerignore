@@ -1,0 +1,38 @@
+# Git
+**/.git
+**/.gitignore
+
+# Python
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.Python
+**/.pytest_cache
+
+# ROS build artifacts
+**/build
+**/install
+**/log
+
+# IDE
+**/.vscode
+**/.cursor
+**/.idea
+**/*.swp
+**/*.swo
+*~
+
+# OS
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Documentation
+**/docs
+**/README.md
+
+# Docker
+**/.dockerignore
+**/Dockerfile
+**/docker-compose.yml

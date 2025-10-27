@@ -1,0 +1,14 @@
+services:
+  driverless:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: jetson_ros2
+    network_mode: host
+    volumes:
+      - ../ros2_ws:/workspace/ros2_ws
+    environment:
+      - ROS_DOMAIN_ID=42
+    stdin_open: true
+    tty: true
+    command: /bin/bash

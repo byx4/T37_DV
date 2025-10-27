@@ -1,0 +1,14 @@
+# Docker Compose override for NVIDIA Jetson Orin AGX
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.jetson.yml up -d
+
+services:
+  driverless:
+    runtime: nvidia
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+    devices:
+      - /dev/video0:/dev/video0  # Camera access
+      - /dev/i2c-0:/dev/i2c-0    # I2C devices
+      - /dev/i2c-1:/dev/i2c-1
+
