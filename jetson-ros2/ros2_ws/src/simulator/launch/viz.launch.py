@@ -19,7 +19,7 @@ def generate_launch_description():
 
         # 1) publish global cones as MarkerArray
         Node(
-            package='sim_core',
+            package='simulator',
             executable='publish_cone_map',
             name='global_cone_markers',
             parameters=[{
@@ -32,7 +32,7 @@ def generate_launch_description():
 
         # 2) keep map->base_link in sync using /vehicle_pose
         Node(
-            package='sim_core',
+            package='simulator',
             executable='pose_to_tf',
             name='pose_to_tf',
             parameters=[{
