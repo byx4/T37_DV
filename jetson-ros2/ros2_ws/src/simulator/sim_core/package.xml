@@ -2,23 +2,39 @@
 <package format="3">
   <name>sim_core</name>
   <version>0.0.1</version>
-  <description>Minimal simulator core for driverless FSAE (ROS2 Jazzy).</description>
-  <maintainer email="bryanx@cs.washington.edu">Bryan Xu</maintainer>
-  <license>MIT</license>
+  <description>
+    Minimal simulator core for driverless FSAE (ROS 2 Jazzy) plus visualization helpers
+    (global cone markers, map→base_link TF, YAML-based map loaders).
+  </description>
 
-  <!-- Build tool dependencies -->
+  <!-- You had two different licenses (MIT + BSD-3-Clause). Keep the more restrictive one
+       or declare both. Here we declare both explicitly. -->
+  <license>MIT</license>
+  <license>BSD-3-Clause</license>
+
+  <maintainer email="bryanx@cs.washington.edu">Bryan Xu</maintainer>
+
+  <!-- Build tool -->
   <buildtool_depend>ament_python</buildtool_depend>
 
-  <!-- Dependencies for ROS2 Python nodes and messages -->
+  <!-- Core ROS2 Python deps -->
   <exec_depend>rclpy</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+
+  <!-- Viz / markers / TF -->
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+
+  <!-- Launching -->
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
 
-  <exec_depend>tf2_ros</exec_depend>
-  <exec_depend>rviz2</exec_depend>
+  <!-- From sim_viz: YAML loader -->
+  <exec_depend>python3-yaml</exec_depend>
 
+  <!-- From sim_core: you had rviz2 declared; keep it for now -->
+  <exec_depend>rviz2</exec_depend>
 
   <export>
     <build_type>ament_python</build_type>
