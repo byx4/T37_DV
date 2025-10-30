@@ -65,6 +65,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #     ros-jazzy-image-transport \
 #     && rm -rf /var/lib/apt/lists/*
 
+# SIMULATION / VISUALIZATION TOOLS
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3-yaml \
+    ros-jazzy-foxglove-bridge \
+    ros-jazzy-tf2-ros \
+    ros-jazzy-visualization-msgs \
+    ros-jazzy-navigation2 \
+    ros-jazzy-nav2-bringup \
+  && rm -rf /var/lib/apt/lists/*
+
 # Set workspace (will be mounted as volume)
 WORKDIR /workspace
 

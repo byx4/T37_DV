@@ -6,43 +6,41 @@ setup(
     name=package_name,
     version='0.0.1',
     packages=[
-        'sim_core',       # your original core stuff
-        'sim_core.viz',   # <- this will be the old sim_viz code (see note below)
+        'sim_core',          # core sim stuff
+        'sim_core.sim_viz',  # <- merged viz lives here on disk
     ],
     data_files=[
         # ament index
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
 
-        # package.xml
-        ('share/' + package_name, ['package.xml', 'README.md']),
+        # package manifest
+        ('share/' + package_name, ['package.xml']),
 
-        # launch files (from BOTH old packages)
+        # launch files
         ('share/' + package_name + '/launch', [
-            'launch/sim_launch.py',       # from old sim_core
-            'launch/sim_rviz.launch.py',  # from old sim_core (you can delete later)
-            'launch/viz.launch.py',       # from old sim_viz
+            'launch/sim_launch.py',
+            'launch/viz.launch.py',
+            'launch/static_frames.launch.py',
+            'launch/sim_rviz.launch.py',   # harmless even if rviz2 not installed
         ]),
     ],
-    install_requires=[
-        'setuptools',
-        'PyYAML',
-    ],
+    install_requires=['setuptools', 'PyYAML'],
     zip_safe=True,
     maintainer='bryanx',
     maintainer_email='bryanx@cs.washington.edu',
-    description='Minimal simulator core for driverless FSAE (ROS 2 Jazzy) with viz helpers.',
-    license='MIT AND BSD-3-Clause',
+    description='Minimal simulator core for driverless FSAE (ROS 2 Jazzy), plus visualization helpers.',
+    license='MIT',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            # from old sim_core
+            # core
             'sim_loop = sim_core.sim_loop:main',
             'mimic_perception = sim_core.mimic_perception:main',
             'vehicle_dynamics = sim_core.vehicle_dynamics:main',
 
-            # from old sim_viz
-            'publish_cone_map = sim_core.viz.publish_cone_map:main',
-            'pose_to_tf = sim_core.viz.pose_to_tf:main',
+            # merged viz (note the path!)
+            'publish_cone_map = sim_core.sim_viz.publish_cone_map:main',
+            'pose_to_tf = sim_core.sim_viz.pose_to_tf:main',
         ],
     },
 )
